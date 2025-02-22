@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from app.models.time_format import TimeFormat
-from app.services.date_time_service import DateTimeFormatter
+from app.repositories.date_time_service import DateTimeFormatter
 
 
 formatter = DateTimeFormatter(format=TimeFormat.HUMAN)

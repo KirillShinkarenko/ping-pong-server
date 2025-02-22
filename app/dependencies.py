@@ -15,5 +15,5 @@ def get_db():
 
 
 # Зависимость для SQLAlchemy репозитория
-def get_sqlalchemy_repo(db: Session = Depends(get_db)) -> TimeRepository:
+def get_time_repo(db: Session = Depends(get_db)) -> TimeRepository:
     return DataBaseTimeRepositoryImpl(db)
