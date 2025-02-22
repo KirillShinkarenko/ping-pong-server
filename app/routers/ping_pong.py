@@ -1,29 +1,24 @@
-from fastapi import FastAPI
+from fastapi import APIRouter, Depends
+from app.models.time_format import TimeFormat
+from app.services.date_time_service import DateTimeFormatter
 
-from services.date_time_service import DateTimeFormatter, TimeFormat
-
-
-app = FastAPI()
 
 formatter = DateTimeFormatter(format=TimeFormat.HUMAN)
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+router = APIRouter()
 
 
-@app.get("/ping")
+@router.get("/ping")
 async def ping():
     return {"message": "pong"}
 
 
-@app.get("/ping/{ping_id}")
+@router.get("/ping/{ping_id}")
 async def ping(ping_id: int):
     return {"message": f"pong {ping_id}"}
 
 
-@app.get("/time")
+@router.get("/time")
 async def get_time():
     """Эндпоинт для получения текущего времени"""
     current_time = formatter.get_current_time()

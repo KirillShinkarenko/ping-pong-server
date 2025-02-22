@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from services.models.time_format import TimeFormat
+from app.models.time_format import TimeFormat
 
 
 class DateTimeFormatter:
